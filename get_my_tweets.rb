@@ -10,7 +10,7 @@ client = Twitter::REST::Client.new do |config|
 end
 
 # Getting tweets from my timeline
-last_tweets = client.home_timeline
+last_tweets = client.home_timeline(options = {:count => 10})
 
 # Printing tweets
 puts "This is the list of tweets:"
