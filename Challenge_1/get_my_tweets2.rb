@@ -23,12 +23,8 @@ last_tweets.each do |tweet|
 end
 
 # Writing tweets to a CSV file. One entry per each line.  
-CSV.open("/Users/Mili/Documents/LearningRuby/Nacho_Challenges/Challenge_1/tweets.csv", "wb") do |csv|
+CSV.open("~tweets.csv", "w") do |csv|
 	last_tweets.each do |tweet|
 	csv << ["Username: #{tweet.user.name}", "Tweet: #{tweet.text}", "Date: #{tweet.created_at}"]	
 	end
 end
-
-# Closing file
-
-
