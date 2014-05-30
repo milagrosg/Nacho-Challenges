@@ -1,13 +1,17 @@
+require 'dotenv'
+
+Dotenv.load
+
 require "rubygems"
 require "twitter"
 require "csv"
 
-# Twitter API config
+# Twitter API setup
 client = Twitter::REST::Client.new do |config|
-	config.consumer_key = "ypZTEZ6JQybfl0SZfRRRBsVVu"
-	config.consumer_secret = "Cmr6Amhxn1OVCV9TlgWecFRrO4BdgScarTpFz35ikGM6xOXEci"
-	config.access_token = "54199181-7KtIh2B8dJTt3ZEl8eYbtr78QhM1Wd95ELCpOJdGp"
-	config.access_token_secret = "Rj7xJGTkyDSH2OmGr46w4WyUKYXIhK0KnxthP5jJ3DFGj"
+	config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
+	config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
+	config.access_token = ENV['TWITTER_ACCESS_TOKEN']
+	config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
 end
 
 # Getting tweets from my timeline
