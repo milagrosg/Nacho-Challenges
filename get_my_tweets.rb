@@ -25,10 +25,9 @@ target = File.open("tweets.txt", 'w')
 
 # Writing tweets to file  
 last_tweets.each do |tweet|
-	target.write(tweet.created_at)
-	target.write(tweet.text)
-	target.write("\n")
+	target.write "Date: #{tweet.created_at} " + "Tweet: #{tweet.text}\n"
 end
 
 # Closing file
 target.close()
+
