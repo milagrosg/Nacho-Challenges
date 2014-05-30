@@ -1,9 +1,9 @@
+require "twitter"
+require "csv"
+require "rubygems"
 require 'dotenv'
 
 Dotenv.load
-
-require "twitter"
-require "csv"
 
 # Twitter API config
 client = Twitter::REST::Client.new do |config|
@@ -11,6 +11,13 @@ client = Twitter::REST::Client.new do |config|
 	config.consumer_secret = ENV['TWITTER_CONSUMER_SECRET']
 	config.access_token = ENV['TWITTER_ACCESS_TOKEN']
 	config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
+end
+
+def user_exists?(user)
+  Twitter.user(user)
+  true
+rescue Twitter::NotFound
+  false
 end
 
 # Getting usernames from command line
@@ -21,14 +28,19 @@ if ARGV[0] != nil
 
 	# Navigating throw users array and getting tweets from each user's timeline
 	users.each do |user|
-		last_tweets = client.user_timeline("#{user}", options = {:count => 10})
+		if user_exists?("#{user}") == true
+			last_tweets = client.user_timeline("#{user}", options = {:count => 10})
 
-		last_tweets.each do |tweet|
-			puts "Username: #{tweet.user.name}"
-			puts "Tweet: #{tweet.text}"
-			puts "Date: #{tweet.created_at}\n"
+			last_tweets.each do |tweet|
+				puts "Username: #{tweet.user.name}"
+				puts "Tweet: #{tweet.text}"
+				puts "Date: #{tweet.created_at}\n"
+			end
+		elseif 
+			puts "#{user} is invalid."
 		end
 	end 
+
 
 # Writing tweets to a CSV file. One entry per each line.  
 
