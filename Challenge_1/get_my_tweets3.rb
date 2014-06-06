@@ -1,7 +1,7 @@
 require "twitter"
 require "csv"
 require "rubygems"
-require 'dotenv'
+require "dotenv"
 
 Dotenv.load
 
@@ -13,12 +13,14 @@ client = Twitter::REST::Client.new do |config|
 	config.access_token_secret = ENV['TWITTER_ACCESS_TOKEN_SECRET']
 end
 
-def user_exists?(user)
-  Twitter.user(user)
+def user_exists?(user, client)
+  client.user(user)
   true
-rescue Twitter::NotFound
+rescue Twitter::Error::NotFound
   false
 end
+
+
 
 # Getting usernames from command line
 users = ARGV
@@ -28,7 +30,7 @@ if ARGV[0] != nil
 
 	# Navigating throw users array and getting tweets from each user's timeline
 	users.each do |user|
-		if user_exists?("#{user}") == true
+		if user_exists?("#{user}",client) == true
 			last_tweets = client.user_timeline("#{user}", options = {:count => 10})
 
 			last_tweets.each do |tweet|
@@ -36,7 +38,7 @@ if ARGV[0] != nil
 				puts "Tweet: #{tweet.text}"
 				puts "Date: #{tweet.created_at}\n"
 			end
-		elseif 
+		elsif 
 			puts "#{user} is invalid."
 		end
 	end 
