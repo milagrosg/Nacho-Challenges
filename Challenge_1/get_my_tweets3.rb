@@ -30,8 +30,8 @@ if ARGV[0] != nil
 
 	# Navigating throw users array and getting tweets from each user's timeline
 	users.each do |user|
-		if user_exists?("#{user}",client) == true
-			last_tweets = client.user_timeline("#{user}", options = {:count => 10})
+		if user_exists?("user",client) == true
+			last_tweets = client.user_timeline("user", options = {:count => 10})
 
 			last_tweets.each do |tweet|
 				puts "Username: #{tweet.user.name}"
@@ -39,7 +39,7 @@ if ARGV[0] != nil
 				puts "Date: #{tweet.created_at}\n"
 			end
 		elsif 
-			puts "#{user} is invalid."
+			puts "user" + "is invalid."
 		end
 	end 
 
