@@ -17,7 +17,7 @@ Cuba.define do
 		end
 
 		on "my_tweets" do 
-			res.write render("views/list_tweets.ham", content: "my tweets")
+			res.write render("views/list_tweets.haml", content: "my tweets")
 		end
 
 		on "about" do 
