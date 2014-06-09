@@ -1,4 +1,4 @@
 = content.each do |tweet|
-	%h1 "#{tweet.created_at}"
-	%h1 "#{tweet.text}\n"
+	%h1= tweet.created_at
+	%h1= tweet.text
 
