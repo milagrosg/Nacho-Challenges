@@ -1,1 +1,4 @@
-%h1 Mis Tweets
+= content.each do |tweet|
+	%h1 "#{tweet.created_at}"
+	%h1 "#{tweet.text}\n"
+

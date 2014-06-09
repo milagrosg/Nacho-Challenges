@@ -27,12 +27,11 @@ Cuba.define do
 		end
 
 		on "my_tweets" do
+			
 			last_tweets = client.home_timeline(:count => 25)
-
-			last_tweets.each do |tweet|
-				res.write render("views/list_tweets.haml", content: "#{tweet.created_at}")
-				res.write render("views/list_tweets.haml", content: "#{tweet.text}\n")
-			end 
+			
+			res.write render("views/list_tweets.haml", :content => last_tweets) 
+		
 		end
 
 		on "about" do 
