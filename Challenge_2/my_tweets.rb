@@ -34,8 +34,13 @@ Cuba.define do
 		
 		end
 
+		on "/tweeting" do 
+			res.write render("views/new_tweet.haml")
+
+		end
+
 		on "bootstrap_test" do 
-			res.write render("views/test_bootstrap.html")
+			res.write render("views/test_bootstrap.html", :twitter_client => client)
 		end
 
 		on "about" do 
