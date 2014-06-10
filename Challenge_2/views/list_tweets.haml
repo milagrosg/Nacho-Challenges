@@ -1,4 +1,6 @@
-= content.each do |tweet|
-	%h1= tweet.created_at
-	%h1= tweet.text
+%h1 This are my last 25 tweets: 
+
+- content.each do |tweet|
+	%p= tweet.created_at
+	%p= tweet.text
 
