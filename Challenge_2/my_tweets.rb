@@ -53,6 +53,8 @@ Cuba.define do
 		on "tweeting" do
 			on param("tweet") do |tweet|
 				res.write tweet
+
+				client.update(tweet)
 			end
 
 		# If there is no input, this block will be excecuted. 
