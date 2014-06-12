@@ -5,7 +5,7 @@ Bundler.require
 
 Dotenv.load 
 
-Cuba.use Rack::Session::Cookie, :secret => "security___stringgggg___"
+Cuba.use Rack::Session::Cookie, :secret => ENV['SECRET_TOKEN']
 
 Cuba.plugin Cuba::Render
 Cuba.settings[:render][:template_engine] = "haml"
@@ -52,15 +52,14 @@ Cuba.define do
 	on post do 
 		on "tweeting" do
 			on param("tweet") do |tweet|
-				res.write "#{tweet}"
+				res.write tweet
 			end
-		end
 
 		# If there is no input, this block will be excecuted. 
 
-		on true do
-			res.write "You need to provide a tweet!"
+			on true do
+				res.write "You need to provide a tweet!"
+			end
 		end
-
 	end
 end
