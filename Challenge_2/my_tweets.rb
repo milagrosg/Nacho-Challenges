@@ -10,6 +10,10 @@ Cuba.use Rack::Session::Cookie, :secret => ENV['SECRET_TOKEN']
 Cuba.plugin Cuba::Render
 Cuba.settings[:render][:template_engine] = "haml"
 
+Cuba.use Rack::Static,
+  urls: %w[/js /css /img],
+  root: File.expand_path("./public", __dir__)
+
 #Twitter API setup
 client = Twitter::REST::Client.new do |config|
 	config.consumer_key = ENV['TWITTER_CONSUMER_KEY']
@@ -23,7 +27,8 @@ Cuba.define do
 	on get do 
 		
 		on root do 
-			res.redirect "/my_tweets"
+			#res.redirect "/my_tweets"
+			res.write render("views/home.haml")
 		end
 
 		on "my_tweets" do
