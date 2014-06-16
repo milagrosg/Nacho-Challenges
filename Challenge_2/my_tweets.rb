@@ -45,7 +45,7 @@ Cuba.define do
 		end
 
 		on "bootstrap_test" do 
-			res.write render("views/test_bootstrap.html", :twitter_client => client)
+			res.write render("views/test_bootstrap.html")
 		end
 
 		on "about" do 
