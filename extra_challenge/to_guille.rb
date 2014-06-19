@@ -15,21 +15,23 @@ end
 puts "How many words to you want to uppercase?"
 prompt; number = gets.chomp
 
-if number.to_i > text.count
+number = number.to_i
+
+if number > text.count
 	puts "Your original text has less than #{number} words. Try again."
 	Process.exit(0)
 end
 
 sample = []
 
-i = 0 
-while i < number.to_i 
-	sample.push(text.sample)
-	i = i + 1
+number.times do
+	item = text.sample
+	sample.push(item)
+	text.delete(item)
 end
 
-for word in sample
-	original_text.gsub!(word, word.upcase())
+sample.each do |word|
+	original_text.gsub!(/\b#{word}\b/, word.upcase)
 end
 
 puts original_text
