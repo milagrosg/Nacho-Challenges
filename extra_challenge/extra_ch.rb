@@ -24,7 +24,8 @@ if number > text.count
 	Process.exit(0)
 end
 
-guillenated = GuilleString.new(original_text,number: number)
+guillenated = GuilleString.new(original_text, number: number)
 
 puts guillenated.to_guille()
+#puts guillenated.to_guille()
 

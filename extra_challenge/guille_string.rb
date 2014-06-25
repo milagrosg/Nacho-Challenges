@@ -2,7 +2,7 @@ class GuilleString
 
 	def initialize(original_text, options = {})
 		@original_text = original_text
-		@number_words = options[:number_words] || 4
+		@number_words = options[:number] || 4
 	end
  
 	def to_guille
