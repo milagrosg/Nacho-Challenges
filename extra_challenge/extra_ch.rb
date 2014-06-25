@@ -1,35 +1,4 @@
-class GuilleString
-
-	def initialize(original_text, options = {})
-		@original_text = original_text
-		@number_words = options[:number_words] || 4
-	end
-
-	def to_array()
-		@text = @original_text.split(' ')
-	end
- 
-	def to_guille()
-		sample = []
-		to_array
-
-		@number_words.times do
-			item = @text.sample
-			sample.push(item)
-			@text.delete(item)
-		end
-
-		sample.each do |word|
-			@original_text.gsub!(/\b#{word}\b/, word.upcase)
-		end
-
-		puts @original_text
-	end
-
-	private :to_array
-
-end
-
+require './guille_string'
 
 def prompt()
 	print ">"
@@ -57,5 +26,5 @@ end
 
 guillenated = GuilleString.new(original_text,number: number)
 
-guillenated.to_guille()
+puts guillenated.to_guille()
 
