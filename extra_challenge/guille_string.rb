@@ -3,6 +3,7 @@ class GuilleString
 	def initialize(original_text, options = {})
 		@original_text = original_text
 		@number_words = options[:number] || 4
+		@guillenaized = String.new
 	end
  
 	def to_guille
@@ -16,10 +17,10 @@ class GuilleString
 		end
 
 		sample.each do |word|
-			@original_text.gsub!(/\b#{word}\b/, word.upcase)
+			@guillenaized += @original_text.sub(/\b#{word}\b/, word.upcase)
 		end
 
-		return @original_text
+		return @guillenaized
 	end
 
 	private 

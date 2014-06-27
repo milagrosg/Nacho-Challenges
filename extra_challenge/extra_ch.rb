@@ -27,5 +27,7 @@ end
 guillenated = GuilleString.new(original_text, number: number)
 
 puts guillenated.to_guille()
-#puts guillenated.to_guille()
+puts guillenated.to_guille()
+
+
 
