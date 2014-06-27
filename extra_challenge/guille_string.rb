@@ -8,7 +8,7 @@ class GuilleString
 	def to_guille
 		sample = []
 		to_array
-		@guillenaized = String.new
+		guillenaized = String.new
 
 		@number_words.times do
 			item = @text.sample
@@ -17,10 +17,10 @@ class GuilleString
 		end
 
 		sample.each do |word|
-			@guillenaized += @original_text.sub(/\b#{word}\b/, word.upcase)
+			guillenaized += @original_text.sub(/\b#{word}\b/, word.upcase)
 		end
 
-		return @guillenaized
+		return guillenaized
 	end
 
 	private 
