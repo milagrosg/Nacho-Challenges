@@ -3,12 +3,12 @@ class GuilleString
 	def initialize(original_text, options = {})
 		@original_text = original_text
 		@number_words = options[:number] || 4
-		@guillenaized = String.new
 	end
  
 	def to_guille
 		sample = []
 		to_array
+		@guillenaized = String.new
 
 		@number_words.times do
 			item = @text.sample
