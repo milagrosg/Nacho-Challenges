@@ -7,11 +7,11 @@ class Histogram
 	end
 
 	def data
-		words = to_array(to_lowercase)
+		words = split_input
 		count = Hash.new(0) 
 
 		words.each do |word|
-			count[word] = count[word] + 1
+			count[word] += 1
 		end
 		
 		count
@@ -19,11 +19,7 @@ class Histogram
 
 	private 
 
-	def to_lowercase
-		input.downcase
-	end
-
-	def to_array(text)
-		text.split(' ')
+	def split_input
+		input.downcase.split(/\W+/)
 	end
 end
