@@ -1,25 +1,28 @@
 class Histogram
 
-	attr_reader :input
+  attr_reader :input
 
-	def initialize(input)
-		@input = input
-	end
+  def initialize(input)
+    @input = input
+  end
 
-	def data
-		words = split_input
-		count = Hash.new(0) 
+  def data
+    count = Hash.new(0) 
 
-		words.each do |word|
-			count[word] += 1
-		end
-		
-		count
-	end
+    split_input.each do |word|
+      count[word] += 1
+    end
+    
+    sort_low_to_high(count)
+  end
 
-	private 
+  private 
 
-	def split_input
-		input.downcase.split(/\W+/)
-	end
+  def split_input
+    input.downcase.split(/\W+/)
+  end
+
+  def sort_low_to_high(data)
+    data.sort_by {|key, value| value}
+  end
 end
