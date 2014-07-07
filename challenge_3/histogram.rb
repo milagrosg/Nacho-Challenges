@@ -13,13 +13,17 @@ class Histogram
       count[word] += 1
     end
     
-    sort_low_to_high(count)
+    sort_by_first_word(count)
   end
 
   private 
 
   def split_input
     input.downcase.split(/\W+/)
+  end
+
+  def sort_by_first_word(data)
+    Hash[data.sort]
   end
 
   def sort_low_to_high(data)

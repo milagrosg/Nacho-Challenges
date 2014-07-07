@@ -6,3 +6,5 @@ input = gets.chomp
 count = Histogram.new(input)
 
 puts count.data
+
+
