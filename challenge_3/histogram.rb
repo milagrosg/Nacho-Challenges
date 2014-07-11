@@ -19,8 +19,8 @@ class Histogram
   def by_first_letter
     final = Hash.new(0)
 
-    data.each do |word, qty|
-      final[word[0]] = qty
+    split_input.each do |word|
+      final[word[0]] += 1
     end
 
     final
