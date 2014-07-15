@@ -2,15 +2,18 @@ require './histogram'
 
 filename = ARGV.first
 
-if filename == nil 
+if filename.nil? 
   puts "No filename specified. Please try again!"
+  exit 1
 elsif File.exist?(filename) == false
   puts "This file does not exist. Please try again!"
-else 
-  txt = File.read(filename)
+  exit 1
+end
 
-  count = Histogram.new(txt)
+txt = File.read(filename)
 
-  puts count.data
-  puts count.by_first_letter
-end 
+count = Histogram.new(txt)
+
+puts count.data
+puts count.by_first_letter
+ 
