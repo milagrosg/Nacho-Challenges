@@ -3,10 +3,10 @@ require './histogram'
 filename = ARGV.first
 
 if filename.nil? 
-  puts "No filename specified.\nUsage:\nruby #{$0} <filename>\nPlease try again!"
+  puts "No filename specified.\nUsage:\nruby " + __FILE__ + " <filename>\nPlease try again!"
   exit 1
 elsif File.exist?(filename) == false
-  puts "This file does not exist.\nUsage:\nruby #{$0} <filename>\nPlease try again!"
+  puts "This file does not exist.\nUsage:\nruby " + __FILE__ + " <filename>\nPlease try again!"
   exit 1
 end
 
