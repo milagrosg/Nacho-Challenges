@@ -1,4 +1,5 @@
 require './histogram'
+require './statistics'
 
 filename = ARGV.first
 
@@ -14,6 +15,21 @@ txt = File.read(filename)
 
 count = Histogram.new(txt)
 
-puts count.data
+datah = count.data
 puts count.by_first_letter
+
+arr = []
+
+datah.each_pair do |key, val|
+  arr.push(val)
+end
+
+puts "The frequency array is: #{arr.join(', ')}."
  
+stat = Statistics.new(arr)
+
+puts "The average of the frequency is #{stat.average}."
+
+puts "The median of the frequency is #{stat.median}."
+
+puts "The mode(s) of the frequency are #{stat.mode}."
