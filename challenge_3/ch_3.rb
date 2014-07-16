@@ -18,8 +18,6 @@ count = Histogram.new(txt)
 datah = count.data
 puts count.by_first_letter
 
-values = []
-
 values = datah.values
 
 puts "The frequency array is: #{values.join(', ')}."
