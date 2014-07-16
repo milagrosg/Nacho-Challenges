@@ -7,9 +7,7 @@ class Statistics
   end
 
   def average
-    value = frequency.inject(0) do |total, num|
-      total += num
-    end
+    value = frequency.inject(0) { |total, num| total += num }
 
     value / frequency.length.to_f
   end
@@ -20,15 +18,13 @@ class Statistics
     if sorted.length.odd?
       value = sorted[sorted.length/2]
     else
-      value = (sorted[(sorted.length/2)-1] + sorted[sorted.length/2])/2.to_f
+      value = (sorted[(sorted.length / 2) - 1] + sorted[sorted.length / 2]) / 2.0
     end
-    
-    value
   end
 
   def mode
     freqh = frequency.inject(Hash.new(0)) { |h,v| h[v] += 1; h}
 
-    freqh.select { |k, v| v == freqh.values.max}
+    freqh.select { |k, v| v == freqh.values.max}.keys
   end
 end
