@@ -30,6 +30,8 @@ puts "The median of the frequency is #{stat.median}."
 
 puts "The mode(s) of the frequency is #{stat.mode.join(', ')}."
 
-puts "This words appear above average: "
+puts "These words appear above average: "
 
-datah.each_pair {| word, value | puts "#{word}" if value > stat.average }
+# datah.each_pair {| word, value | puts word if value > stat.average }
+
+puts datah.select { |word, value| value > stat.average}.keys
